@@ -30,12 +30,22 @@
     </div>
   </nav>
 
-  <!-- Carrusel de Publicidad -->
-  <div class="container">
-    <div class="carousel carousel-slider center" data-indicators="true">
-      <a class="carousel-item" href="#"><img src="./img/01.jpeg" alt="publicidad"></a>
-      <a class="carousel-item" href="#"><img src="./img/02.jpeg" alt="publicidad"></a>
-      <a class="carousel-item" href="#"><img src="./img/03.jpeg" alt="publicidad"></a>
+  <!-- Visualizador de Canción -->
+  <div class="center-align" style="margin:2rem 0;">
+    <div class="circle-song-visual">
+      <div class="spectrum-bars">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="song-info">
+        <span class="song-title">Nombre de la Canción</span>
+        <br>
+        <span class="song-artist">Nombre del Artista</span>
+      </div>
     </div>
   </div>
 
@@ -94,10 +104,8 @@
         navigator.serviceWorker.register('/zona-vida-ADOOKIA/sw.js');
       });
     }
-    // Carrusel y Tooltips
+    // Tooltips
     document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.carousel');
-      M.Carousel.init(elems, { fullWidth: true, indicators: true });
       var tooltips = document.querySelectorAll('.tooltipped');
       M.Tooltip.init(tooltips);
     });
