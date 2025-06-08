@@ -1,22 +1,82 @@
-body {
-  min-height: 100vh;
-  min-width: 100vw;
-  /*IMPORTANTE*/
-  /* display: flex; */
-  justify-content: center;
+/* Visualizador circular y espectro */
+.circle-song-visual {
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a770ef 0%, #f6d365 100%);
+  box-shadow: 0 4px 24px 0 #9b59b640;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  background-color:#5e2760;
-  background: url("img/bg.png") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  justify-content: center;
+  position: relative;
+  animation: float 4s ease-in-out infinite;
 }
-audio{display: none;}
-.adookia{
-  display: block;
+@keyframes float {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-12px);}
+}
+
+.song-info {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  text-shadow: 0 2px 4px #00000033;
+  margin-top: 1.2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.song-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.song-artist {
+  font-size: 1rem;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.spectrum-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 40px;
+  margin-top: 20px;
+  gap: 5px;
   position: absolute;
-  top: 100px;
-  right: 0;
-  z-index: 9999;
+  top: 38px;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.spectrum-bars .bar {
+  width: 12px;
+  height: 22px;
+  background: #fff;
+  border-radius: 5px;
+  margin: 0 2px;
+  animation: bounce 1s infinite alternate;
+}
+.spectrum-bars .bar:nth-child(2) { animation-delay: 0.15s;}
+.spectrum-bars .bar:nth-child(3) { animation-delay: 0.3s;}
+.spectrum-bars .bar:nth-child(4) { animation-delay: 0.45s;}
+.spectrum-bars .bar:nth-child(5) { animation-delay: 0.6s;}
+.spectrum-bars .bar:nth-child(6) { animation-delay: 0.75s;}
+
+@keyframes bounce {
+  to { height: 38px; background: #fff9; }
+}
+
+/* Botones sociales con efecto */
+.center-align .btn-floating {
+  margin: 0 8px 0 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.center-align .btn-floating:hover {
+  transform: scale(1.15) rotate(-7deg);
+  box-shadow: 0 8px 24px 0 #0004;
 }
