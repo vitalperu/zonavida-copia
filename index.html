@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta charset="utf-8">
-  <title>Radio Streaming</title>
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--Import materialize.css-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  <link rel="stylesheet" href="style.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+    <title>Radio Streaming</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
 
-  <meta name="description" content="Bienvenid@s a la web PWA proporcionada por adookia para empresas ... :)">
+    <meta name="description" content="Bienvenid@s a la web PWA proporcionada por adookia para empresas ... :)">
 
-  <meta name="theme-color" content="#5e2760">
-  <meta name="MobileOptimized" content="width">
-  <meta name="HandheldFriendly" content="true">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="./img/logo.png">
-  <link rel="apple-touch-startup-image" href="./img/logo.png">
-  <!-- CORREGIDO: Ruta absoluta para GitHub Pages -->
-  <link rel="manifest" href="/zona-vida-ADOOKIA/manifest.json">
-</head>
+    <meta name="theme-color" content="#5e2760">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./img/logo.png">
+    <link rel="apple-touch-startup-image" href="./img/logo.png">
+    <!-- CORREGIDO: Ruta absoluta para GitHub Pages -->
+    <link rel="manifest" href="/zona-vida-ADOOKIA/manifest.json">
+  </head>
 
   <body>
     <div class="container">
@@ -35,17 +35,17 @@
           </figure>
         </div>
       </div>
-    <div class="row">
-          <div class="carousel  carousel-slider">
-            <a class="carousel-item" href="#"><img src="./img/01.jpeg" alt="publicidad"></a>
-            <a class="carousel-item" href="#"><img src="./img/02.jpeg" alt="publicidad"></a>
-            <a class="carousel-item" href="#"><img src="./img/03.jpeg" alt="publicidad"></a>
-          </div>
+      <div class="row">
+        <div class="carousel  carousel-slider">
+          <a class="carousel-item" href="#"><img src="./img/01.jpeg" alt="publicidad"></a>
+          <a class="carousel-item" href="#"><img src="./img/02.jpeg" alt="publicidad"></a>
+          <a class="carousel-item" href="#"><img src="./img/03.jpeg" alt="publicidad"></a>
+        </div>
+      </div>
     </div>
-  </div>
     <audio id="player" controls autoplay>
       <source src="https://radio.zonavidahd.online/listen/hd/radio.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
+      Your browser does not support the audio element.
     </audio>
 
     <div class="fixed-action-btn toolbar">
@@ -60,12 +60,24 @@
       </ul>
     </div>
     
-      
     <div class="adookia">
-            <a href="https://www.youtube.com/@enlaceperutv" target="_blank"><img class="responsive-img" src="img/etiqueta.svg" alt="adookia.com"></a>
+      <a href="https://www.youtube.com/@enlaceperutv" target="_blank"><img class="responsive-img" src="img/etiqueta.svg" alt="adookia.com"></a>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript" src="./script.js"></script>
+    <!-- REGISTRO DEL SERVICE WORKER para GitHub Pages -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/zona-vida-ADOOKIA/sw.js')
+            .then(function(registration) {
+              console.log('Service Worker registrado con éxito:', registration.scope);
+            }, function(err) {
+              console.log('Error al registrar el Service Worker:', err);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
