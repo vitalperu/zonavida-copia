@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Materialize CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <!-- Tu CSS -->
   <link rel="stylesheet" href="style.css">
   <meta name="theme-color" content="#5e2760">
   <link rel="manifest" href="/zona-vida-ADOOKIA/manifest.json">
@@ -17,12 +16,17 @@
 </head>
 <body class="deep-purple lighten-5">
 
-  <!-- Header y Logo -->
+  <!-- Menú de navegación -->
   <nav class="white z-depth-1">
     <div class="nav-wrapper container">
-      <a href="#" class="brand-logo center">
+      <a href="#" class="brand-logo">
         <img src="./img/logo.png" alt="Zona Vida Radio" style="height:50px; margin-top:5px;">
       </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Programas</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
     </div>
   </nav>
 
@@ -57,23 +61,20 @@
     </div>
   </div>
 
-  <!-- Botón Instalar PWA -->
+  <!-- Botón Instalar PWA SIEMPRE visible -->
   <div class="center-align" style="margin-top:2rem;">
-    <button id="installBtn" class="btn-large waves-effect waves-light green" style="display:none;">
+    <button id="installBtn" class="btn-large waves-effect waves-light green">
       <i class="material-icons left">download</i>
       Instalar App
     </button>
   </div>
 
-  <!-- Botones Sociales -->
-  <div class="fixed-action-btn social-fab">
-    <a class="btn-floating btn-large red pulse"><i class="material-icons">share</i></a>
-    <ul>
-      <li><a class="btn-floating red tooltipped" data-position="left" data-tooltip="YouTube" href="https://www.youtube.com/@enlaceperutv" target="_blank"><i class="material-icons">ondemand_video</i></a></li>
-      <li><a class="btn-floating blue tooltipped" data-position="left" data-tooltip="Facebook" href="https://facebook.com" target="_blank"><i class="material-icons">facebook</i></a></li>
-      <li><a class="btn-floating blue lighten-1 tooltipped" data-position="left" data-tooltip="Twitter" href="https://twitter.com" target="_blank"><i class="material-icons">twitter</i></a></li>
-      <li><a class="btn-floating purple tooltipped" data-position="left" data-tooltip="Instagram" href="https://instagram.com" target="_blank"><i class="material-icons">photo_camera</i></a></li>
-    </ul>
+  <!-- Botones Sociales siempre visibles -->
+  <div class="center-align" style="margin-top:2rem;">
+    <a class="btn-floating btn-large red tooltipped" href="https://www.youtube.com/@enlaceperutv" target="_blank" data-tooltip="YouTube"><i class="material-icons">ondemand_video</i></a>
+    <a class="btn-floating btn-large blue tooltipped" href="https://facebook.com" target="_blank" data-tooltip="Facebook"><i class="material-icons">facebook</i></a>
+    <a class="btn-floating btn-large blue lighten-1 tooltipped" href="https://twitter.com" target="_blank" data-tooltip="Twitter"><i class="material-icons">twitter</i></a>
+    <a class="btn-floating btn-large purple tooltipped" href="https://instagram.com" target="_blank" data-tooltip="Instagram"><i class="material-icons">photo_camera</i></a>
   </div>
 
   <!-- Etiqueta adoOKIA -->
@@ -83,24 +84,24 @@
     </a>
   </div>
 
-  <!-- JS, Materialize y tu script -->
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="script.js"></script>
-  <!-- Registro Service Worker para GitHub Pages -->
+  <!-- Registro Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
         navigator.serviceWorker.register('/zona-vida-ADOOKIA/sw.js');
       });
     }
-    // Carrusel
+    // Carrusel y Tooltips
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.carousel');
       M.Carousel.init(elems, { fullWidth: true, indicators: true });
       var tooltips = document.querySelectorAll('.tooltipped');
       M.Tooltip.init(tooltips);
     });
-    // PWA Install
+    // Botón instalar PWA
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -116,6 +117,8 @@
           installBtn.textContent = "¡Instalada!";
         }
         deferredPrompt = null;
+      } else {
+        alert("Para instalar, usa Chrome en Android o PC.");
       }
     });
   </script>
