@@ -2,7 +2,7 @@
 const CACHE_NAME = 'v1_adookia',
   urlsToCache = [
     './',
-    'http://ibizaglobalradio.streaming-pro.com:8024/;?type=http&nocache=14583',
+    'https://radio.zonavidahd.online/listen/hd/radio.mp3',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css',
     './style.css',
