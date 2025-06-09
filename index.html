@@ -16,8 +16,15 @@
   />
   <!-- Tu CSS -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Enlaces para PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#5e2760" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body class="deep-purple lighten-5">
+
+  <!-- Aquí va tu código HTML existente, menú, reproductor, etc. -->
 
   <nav class="white z-depth-1">
     <div class="nav-wrapper container">
@@ -93,5 +100,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Tu JS -->
   <script src="script.js"></script>
+
+  <!-- Registro del Service Worker para PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('Service Worker registrado con éxito:', registration.scope);
+          })
+          .catch(error => {
+            console.error('Error registrando el Service Worker:', error);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
