@@ -36,104 +36,94 @@
   </div>
 </nav>
 
-
-
-
-  <!-- Visualizador de Canción -->
-  <div class="center-align" style="margin:2rem 0;">
-    <div class="circle-song-visual">
-      <div class="spectrum-bars">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-      <div class="song-info">
-        <span class="song-title">Nombre de la Canción</span>
-        <br>
-        <span class="song-artist">Nombre del Artista</span>
-      </div>
+<!-- Visualizador de Canción -->
+<div class="center-align" style="margin:2rem 0;">
+  <div class="circle-song-visual">
+    <div class="spectrum-bars">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="song-info">
+      <span class="song-title">Nombre de la Canción</span>
+      <br>
+      <span class="song-artist">Nombre del Artista</span>
     </div>
   </div>
-
-  <!-- Controles de Radio -->
-  <div class="center-align" style="margin-top: 2rem;">
-    <audio id="player" preload="none">
-      <source src="https://radio.zonavidahd.online/listen/hd/radio.mp3" type="audio/mpeg">
-      Tu navegador no soporta audio en línea.
-    </audio>
-<div class="radio-controls">
-  <button class="btn-floating btn-large waves-effect waves-light purple" onclick="document.getElementById('player').play()">
-    <i class="material-icons">play_arrow</i>
-  </button>
-  <button class="btn-floating btn-large waves-effect waves-light pink" onclick="document.getElementById('player').pause()">
-    <i class="material-icons">pause</i>
-  </button>
-  <!-- Aquí va la barra de volumen -->
-  <input id="volumeBar" type="range" min="0" max="1" step="0.01" value="1" style="vertical-align:middle; width: 140px; margin: 0 16px;">
-  <span id="volIcon" style="vertical-align: middle;"><i class="material-icons">volume_up</i></span>
 </div>
 
-  <!-- Botón Instalar PWA SIEMPRE visible -->
-  <div class="center-align" style="margin-top:2rem;">
-    <button id="installBtn" class="btn-large waves-effect waves-light green">
-      <i class="material-icons left">download</i>
-      Instalar App
+<!-- Controles de Radio -->
+<div class="center-align" style="margin-top: 2rem;">
+  <audio id="player" preload="auto">
+    <source src="https://radio.zonavidahd.online/listen/hd/radio.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio en línea.
+  </audio>
+  <div class="radio-controls">
+    <button class="btn-floating btn-large waves-effect waves-light purple" onclick="document.getElementById('player').play()">
+      <i class="material-icons">play_arrow</i>
     </button>
+    <button class="btn-floating btn-large waves-effect waves-light pink" onclick="document.getElementById('player').pause()">
+      <i class="material-icons">pause</i>
+    </button>
+    <!-- Barra de volumen -->
+    <input id="volumeBar" type="range" min="0" max="1" step="0.01" value="1" style="vertical-align:middle; width: 140px; margin: 0 16px;">
+    <span id="volIcon" style="vertical-align: middle;"><i class="material-icons">volume_up</i></span>
   </div>
+</div>
 
-  <!-- Botones Sociales siempre visibles -->
-  <div class="center-align" style="margin-top:2rem;">
-    <a class="btn-floating btn-large red tooltipped" href="https://www.youtube.com/@enlaceperutv" target="_blank" data-tooltip="YouTube"><i class="material-icons">ondemand_video</i></a>
-    <a class="btn-floating btn-large blue tooltipped" href="https://facebook.com" target="_blank" data-tooltip="Facebook"><i class="material-icons">facebook</i></a>
-    <a class="btn-floating btn-large blue lighten-1 tooltipped" href="https://twitter.com" target="_blank" data-tooltip="Twitter"><i class="material-icons">twitter</i></a>
-    <a class="btn-floating btn-large purple tooltipped" href="https://instagram.com" target="_blank" data-tooltip="Instagram"><i class="material-icons">photo_camera</i></a>
-  </div>
+<!-- Botón Instalar PWA SIEMPRE visible -->
+<div class="center-align" style="margin-top:2rem;">
+  <button id="installBtn" class="btn-large waves-effect waves-light green">
+    <i class="material-icons left">download</i>
+    Instalar App
+  </button>
+</div>
 
-  <!-- Etiqueta adoOKIA -->
-  <div class="adookia center-align" style="margin:2rem;">
-    <a href="https://www.youtube.com/@enlaceperutv" target="_blank">
-      <img class="responsive-img" src="img/etiqueta.svg" alt="adookia.com" style="max-width:160px;">
-    </a>
-  </div>
+<!-- Etiqueta adoOKIA -->
+<div class="adookia center-align" style="margin:2rem;">
+  <a href="https://www.youtube.com/@enlaceperutv" target="_blank">
+    <img class="responsive-img" src="img/etiqueta.svg" alt="adookia.com" style="max-width:160px;">
+  </a>
+</div>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="script.js"></script>
-  <!-- Registro Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/zona-vida-ADOOKIA/sw.js');
-      });
-    }
-    // Tooltips
-    document.addEventListener('DOMContentLoaded', function() {
-      var tooltips = document.querySelectorAll('.tooltipped');
-      M.Tooltip.init(tooltips);
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="script.js"></script>
+<!-- Registro Service Worker e inicialización tooltips y PWA -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/zona-vida-ADOOKIA/sw.js');
     });
-    // Botón instalar PWA
-    let deferredPrompt;
-    const installBtn = document.getElementById('installBtn');
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = 'inline-block';
-    });
-    installBtn.addEventListener('click', async () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-          installBtn.textContent = "¡Instalada!";
-        }
-        deferredPrompt = null;
-      } else {
-        alert("Para instalar, usa Chrome en Android o PC.");
+  }
+  // Tooltips
+  document.addEventListener('DOMContentLoaded', function() {
+    var tooltips = document.querySelectorAll('.tooltipped');
+    M.Tooltip.init(tooltips);
+  });
+  // Botón instalar PWA
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'inline-block';
+  });
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        installBtn.textContent = "¡Instalada!";
       }
-    });
-  </script>
+      deferredPrompt = null;
+    } else {
+      alert("Para instalar, usa Chrome en Android o PC.");
+    }
+  });
+</script>
 </body>
 </html>
