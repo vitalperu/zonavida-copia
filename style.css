@@ -87,17 +87,17 @@
   min-height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Cambié de center a flex-end para empujar abajo */
+  justify-content: flex-end;
   align-items: center;
   gap: 1rem;
-  padding: 2rem 0 3rem 0; /* Más espacio arriba y abajo para aire */
+  padding: 2rem 0 3rem 0;
 }
 
 .circle-wrapper {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centro todo en esta columna */
+  align-items: center;
 }
 
 /* Controles de radio compactos */
@@ -173,6 +173,8 @@
   align-items: center;
   gap: 20px;
   margin: 0;
+  flex-wrap: wrap; /* permite que los items pasen a la siguiente línea */
+  justify-content: center; /* centra el menú en líneas nuevas */
 }
 
 .nav-menu li {
@@ -187,23 +189,20 @@
   letter-spacing: 1px;
   font-size: 1.1rem;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .nav-menu a:hover {
   color: #a770ef;
 }
 
-@media (max-width: 900px) {
-  .nav-socials {
-    gap: 5px !important;
-  }
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
   .nav-menu {
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 12px;
   }
   .nav-menu a {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 
