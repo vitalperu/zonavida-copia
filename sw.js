@@ -1,13 +1,13 @@
 const CACHE_NAME = 'zona-vida-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/script.js',
-  '/favicon.ico',
-  '/manifest.json',
-  '/img/logo.png',
-  // agrega otros recursos estáticos necesarios
+  '/zona-vida-ADOOKIA/',
+  '/zona-vida-ADOOKIA/index.html',
+  '/zona-vida-ADOOKIA/style.css',
+  '/zona-vida-ADOOKIA/script.js',
+  '/zona-vida-ADOOKIA/favicon.ico',
+  '/zona-vida-ADOOKIA/manifest.json',
+  '/zona-vida-ADOOKIA/img/logo.png',
+  // Agrega otros recursos estáticos necesarios aquí
 ];
 
 self.addEventListener('install', event => {
@@ -21,8 +21,10 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => {
-      return Promise.all(keys.filter(key => key !== CACHE_NAME)
-        .map(key => caches.delete(key)));
+      return Promise.all(
+        keys.filter(key => key !== CACHE_NAME)
+            .map(key => caches.delete(key))
+      );
     }).then(() => self.clients.claim())
   );
 });
