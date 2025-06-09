@@ -2,54 +2,35 @@
 .circle-song-visual {
   width: 240px;
   height: 240px;
-  margin: 0 auto 1.5rem auto;
   border-radius: 50%;
   background: linear-gradient(135deg, #a770ef 0%, #f6d365 100%);
   box-shadow: 0 4px 24px 0 #9b59b640;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: relative;
   animation: float 4s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 @keyframes float {
-  0%, 100% { transform: translateY(0);}
-  50% { transform: translateY(-12px);}
-}
-
-.song-info {
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
-  text-shadow: 0 2px 4px #00000033;
-  margin-top: 1.2rem;
-  text-align: center;
-  font-weight: 600;
-}
-
-.song-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-.song-artist {
-  font-size: 1rem;
-  font-style: italic;
-  opacity: 0.85;
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 .spectrum-bars {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  height: 40px;
-  margin-top: 20px;
-  gap: 5px;
   position: absolute;
   top: 38px;
   left: 0;
   width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 40px;
+  gap: 5px;
   z-index: 2;
 }
 
@@ -61,14 +42,111 @@
   margin: 0 2px;
   animation: bounce 1s infinite alternate;
 }
-.spectrum-bars .bar:nth-child(2) { animation-delay: 0.15s;}
-.spectrum-bars .bar:nth-child(3) { animation-delay: 0.3s;}
-.spectrum-bars .bar:nth-child(4) { animation-delay: 0.45s;}
-.spectrum-bars .bar:nth-child(5) { animation-delay: 0.6s;}
-.spectrum-bars .bar:nth-child(6) { animation-delay: 0.75s;}
+
+.spectrum-bars .bar:nth-child(2) { animation-delay: 0.15s; }
+.spectrum-bars .bar:nth-child(3) { animation-delay: 0.3s; }
+.spectrum-bars .bar:nth-child(4) { animation-delay: 0.45s; }
+.spectrum-bars .bar:nth-child(5) { animation-delay: 0.6s; }
+.spectrum-bars .bar:nth-child(6) { animation-delay: 0.75s; }
 
 @keyframes bounce {
-  to { height: 38px; background: #fff9; }
+  to {
+    height: 38px;
+    background: #fff9;
+  }
+}
+
+/* Texto debajo del círculo, centrado y pequeño */
+.song-info {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #5e2760;
+  font-weight: 600;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  letter-spacing: 0.8px;
+}
+
+.song-title {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #5e2760;
+  margin-bottom: 0.2rem;
+}
+
+.song-artist {
+  font-style: italic;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* Contenedor principal */
+.player-container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Cambié de center a flex-end para empujar abajo */
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0 3rem 0; /* Más espacio arriba y abajo para aire */
+}
+
+.circle-wrapper {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centro todo en esta columna */
+}
+
+/* Controles de radio compactos */
+.radio-controls-wrapper {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.radio-controls {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Botón instalar centrado, pequeño, ovalado y elegante */
+.install-button-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#installBtn {
+  padding: 0 20px;
+  height: 36px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  background-color: #5e2760;
+  color: #fff;
+  text-transform: none;
+  box-shadow: 0 4px 12px rgb(94 39 96 / 0.5);
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+#installBtn:hover {
+  background-color: #a770ef;
+}
+
+#installBtn i.material-icons.left {
+  font-size: 20px;
+  line-height: 20px;
 }
 
 /* Botones sociales con efecto */
@@ -76,6 +154,7 @@
   margin: 0 8px 0 0;
   transition: transform 0.2s, box-shadow 0.2s;
 }
+
 .center-align .btn-floating:hover {
   transform: scale(1.15) rotate(-7deg);
   box-shadow: 0 8px 24px 0 #0004;
@@ -85,22 +164,23 @@
   margin-right: 0;
   box-shadow: none;
 }
-@media (max-width: 900px) {
-  .nav-socials {
-    gap: 5px !important;
-  }
-  .brand-logo img {
-    height: 38px !important;
-  }
+
+/* Menú y responsividad */
 .nav-menu {
   list-style: none;
   padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
 }
+
 .nav-menu li {
   display: inline-block;
 }
+
 .nav-menu a {
-  color: #5e2760 !important;
+  color: #5e2760;
   font-weight: 600;
   font-family: 'Montserrat', Arial, sans-serif;
   text-transform: uppercase;
@@ -108,21 +188,36 @@
   font-size: 1.1rem;
   transition: color 0.2s;
 }
+
 .nav-menu a:hover {
-  color: #a770ef !important;
+  color: #a770ef;
 }
-.nav-socials .btn-floating {
-  margin-right: 0;
-  box-shadow: none;
+
+@media (max-width: 900px) {
+  .nav-socials {
+    gap: 5px !important;
+  }
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .nav-menu a {
+    font-size: 1rem;
+  }
 }
+
 @media (max-width: 700px) {
   .nav-wrapper.container {
     flex-direction: column;
     gap: 10px;
+    align-items: center;
   }
   .nav-menu {
     justify-content: center !important;
     gap: 8px !important;
-  }  
+  }
+  .nav-socials {
+    justify-content: center;
+  }
 }
-
