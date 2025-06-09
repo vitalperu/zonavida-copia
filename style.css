@@ -84,7 +84,7 @@
 
 /* Contenedor principal */
 .player-container {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end; /* Cambié de center a flex-end para empujar abajo */
