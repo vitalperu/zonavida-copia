@@ -1,21 +1,23 @@
-{
-  "name": "Zona Vida Radio",
-  "short_name": "ZonaVida",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#5e2760",
-  "theme_color": "#5e2760",
-  "description": "App para escuchar Zona Vida Radio desde cualquier dispositivo.",
-  "icons": [
-    {
-      "src": "img/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "img/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
-}
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+installBtn.style.display = 'none'; // Oculta el botón al cargar
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = 'inline-flex'; // Muestra el botón solo cuando se puede instalar
+});
+
+installBtn.addEventListener('click', async () => {
+  if (!deferredPrompt) {
+    alert('Para instalar, usa Chrome en Android o PC.');
+    return;
+  }
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  if (outcome === 'accepted') {
+    installBtn.textContent = '¡Instalada!';
+  }
+  deferredPrompt = null;
+  installBtn.style.display = 'none'; // Oculta el botón después de instalar o cancelar
+});
