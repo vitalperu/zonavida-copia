@@ -80,3 +80,17 @@
   transform: scale(1.15) rotate(-7deg);
   box-shadow: 0 8px 24px 0 #0004;
 }
+
+.nav-socials .btn-floating {
+  margin-right: 0;
+  box-shadow: none;
+}
+@media (max-width: 900px) {
+  .nav-socials {
+    gap: 5px !important;
+  }
+  .brand-logo img {
+    height: 38px !important;
+  }
+}
+
