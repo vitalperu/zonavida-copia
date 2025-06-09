@@ -1,122 +1,162 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zona Vida Radio</title>
   <!-- Google Fonts y Material Icons -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <!-- Materialize CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="style.css">
-  <meta name="theme-color" content="#5e2760">
-  <link rel="manifest" href="/zona-vida-ADOOKIA/manifest.json">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#5e2760" />
+  <link rel="manifest" href="/zona-vida-ADOOKIA/manifest.json" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body class="deep-purple lighten-5">
+  <!-- Menú de navegación moderno y alineado -->
+  <nav class="white z-depth-1">
+    <div
+      class="nav-wrapper container"
+      style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap"
+    >
+      <div style="display: flex; align-items: center; gap: 20px">
+        <img src="./img/logo.png" alt="Zona Vida Radio" style="height: 50px; margin-top: 5px" />
+        <div class="nav-socials" style="display: flex; align-items: center; gap: 10px">
+          <a
+            class="btn-floating btn-small red tooltipped"
+            href="https://www.youtube.com/@enlaceperutv"
+            target="_blank"
+            data-tooltip="YouTube"
+            ><i class="material-icons">ondemand_video</i></a
+          >
+          <a
+            class="btn-floating btn-small blue tooltipped"
+            href="https://facebook.com"
+            target="_blank"
+            data-tooltip="Facebook"
+            ><i class="material-icons">facebook</i></a
+          >
+          <a
+            class="btn-floating btn-small blue lighten-1 tooltipped"
+            href="https://twitter.com"
+            target="_blank"
+            data-tooltip="Twitter"
+            ><i class="material-icons">twitter</i></a
+          >
+          <a
+            class="btn-floating btn-small purple tooltipped"
+            href="https://instagram.com"
+            target="_blank"
+            data-tooltip="Instagram"
+            ><i class="material-icons">photo_camera</i></a
+          >
+        </div>
+      </div>
+      <ul class="nav-menu" style="display: flex; align-items: center; gap: 16px; margin: 0; flex-wrap: wrap">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Programas</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<!-- Menú de navegación moderno y alineado -->
-<nav class="white z-depth-1">
-  <div class="nav-wrapper container" style="display: flex; align-items: center; justify-content: space-between;">
-    <div style="display: flex; align-items: center;">
-      <img src="./img/logo.png" alt="Zona Vida Radio" style="height:50px; margin-top:5px;">
-      <div class="nav-socials" style="display: flex; align-items: center; gap: 10px; margin-left: 20px;">
-        <a class="btn-floating btn-small red tooltipped" href="https://www.youtube.com/@enlaceperutv" target="_blank" data-tooltip="YouTube"><i class="material-icons">ondemand_video</i></a>
-        <a class="btn-floating btn-small blue tooltipped" href="https://facebook.com" target="_blank" data-tooltip="Facebook"><i class="material-icons">facebook</i></a>
-        <a class="btn-floating btn-small blue lighten-1 tooltipped" href="https://twitter.com" target="_blank" data-tooltip="Twitter"><i class="material-icons">twitter</i></a>
-        <a class="btn-floating btn-small purple tooltipped" href="https://instagram.com" target="_blank" data-tooltip="Instagram"><i class="material-icons">photo_camera</i></a>
+  <!-- Contenedor que baja el círculo y el botón -->
+  <div class="player-container">
+    <!-- Visualizador de Canción y texto debajo -->
+    <div class="circle-wrapper">
+      <div class="circle-song-visual">
+        <div class="spectrum-bars">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+      <!-- Texto de canción y artista fuera y debajo del círculo -->
+      <div class="song-info">
+        <div class="song-title">Nombre de la Canción</div>
+        <div class="song-artist">Nombre del Artista</div>
       </div>
     </div>
-    <ul class="nav-menu" style="display: flex; align-items: center; gap: 16px; margin: 0;">
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Programas</a></li>
-      <li><a href="#">Contacto</a></li>
-    </ul>
-  </div>
-</nav>
 
-<!-- Visualizador de Canción -->
-<div class="center-align" style="margin:2rem 0;">
-  <div class="circle-song-visual">
-    <div class="spectrum-bars">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+    <!-- Controles de Radio -->
+    <div class="radio-controls-wrapper">
+      <audio id="player" preload="auto">
+        <source src="https://radio.zonavidahd.online/listen/hd/radio.mp3" type="audio/mpeg" />
+        Tu navegador no soporta audio en línea.
+      </audio>
+      <div class="radio-controls">
+        <button id="playPauseBtn" class="btn-floating btn-large waves-effect waves-light purple">
+          <i id="playPauseIcon" class="material-icons">play_arrow</i>
+        </button>
+        <!-- Barra de volumen -->
+        <input
+          id="volumeBar"
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value="1"
+          style="vertical-align: middle; width: 140px; margin: 0 16px"
+        />
+        <span id="volIcon" style="vertical-align: middle; cursor: pointer">
+          <i class="material-icons">volume_up</i>
+        </span>
+        <span id="volValue" style="font-weight: 600; margin-left: 8px">100%</span>
+      </div>
     </div>
-    <div class="song-info">
-      <span class="song-title">Nombre de la Canción</span>
-      <br>
-      <span class="song-artist">Nombre del Artista</span>
+
+    <!-- Botón instalar justo debajo, centrado -->
+    <div class="install-button-wrapper">
+      <button id="installBtn" class="btn-large waves-effect waves-light">
+        <i class="material-icons left">download</i> Instalar App
+      </button>
     </div>
   </div>
-</div>
 
-<!-- Controles de Radio -->
-<div class="center-align" style="margin-top: 2rem;">
-  <audio id="player" preload="auto">
-    <source src="https://radio.zonavidahd.online/listen/hd/radio.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio en línea.
-  </audio>
-  <div class="radio-controls">
-    <button class="btn-floating btn-large waves-effect waves-light purple" onclick="document.getElementById('player').play()">
-      <i class="material-icons">play_arrow</i>
-    </button>
-    <button class="btn-floating btn-large waves-effect waves-light pink" onclick="document.getElementById('player').pause()">
-      <i class="material-icons">pause</i>
-    </button>
-    <!-- Barra de volumen -->
-    <input id="volumeBar" type="range" min="0" max="1" step="0.01" value="1" style="vertical-align:middle; width: 140px; margin: 0 16px;">
-    <span id="volIcon" style="vertical-align: middle;"><i class="material-icons">volume_up</i></span>
-  </div>
-</div>
-
-<!-- Botón Instalar PWA SIEMPRE visible -->
-<div class="center-align" style="margin-top:2rem;">
-  <button id="installBtn" class="btn-large waves-effect waves-light green">
-    <i class="material-icons left">download</i>
-    Instalar App
-  </button>
-</div>
-
-<!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="script.js"></script>
-<!-- Registro Service Worker e inicialización tooltips y PWA -->
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/zona-vida-ADOOKIA/sw.js');
-    });
-  }
-  // Tooltips
-  document.addEventListener('DOMContentLoaded', function() {
-    var tooltips = document.querySelectorAll('.tooltipped');
-    M.Tooltip.init(tooltips);
-  });
-  // Botón instalar PWA
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'inline-block';
-  });
-  installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') {
-        installBtn.textContent = "¡Instalada!";
-      }
-      deferredPrompt = null;
-    } else {
-      alert("Para instalar, usa Chrome en Android o PC.");
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="script.js"></script>
+  <!-- Registro Service Worker e inicialización tooltips y PWA -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/zona-vida-ADOOKIA/sw.js");
+      });
     }
-  });
-</script>
+    // Tooltips
+    document.addEventListener("DOMContentLoaded", function () {
+      var tooltips = document.querySelectorAll(".tooltipped");
+      M.Tooltip.init(tooltips);
+    });
+    // Botón instalar PWA
+    let deferredPrompt;
+    const installBtn = document.getElementById("installBtn");
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = "inline-block";
+    });
+    installBtn.addEventListener("click", async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === "accepted") {
+          installBtn.textContent = "¡Instalada!";
+        }
+        deferredPrompt = null;
+      } else {
+        alert("Para instalar, usa Chrome en Android o PC.");
+      }
+    });
+  </script>
 </body>
 </html>
