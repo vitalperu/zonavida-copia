@@ -20,51 +20,25 @@
 </head>
 <body class="deep-purple lighten-5">
   <!-- Menú de navegación moderno y alineado -->
-  <nav class="white z-depth-1">
-    <div
-      class="nav-wrapper container"
-      style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap"
-    >
-      <div style="display: flex; align-items: center; gap: 20px">
-        <img src="./img/logo.png" alt="Zona Vida Radio" style="height: 50px; margin-top: 5px" />
-        <div class="nav-socials" style="display: flex; align-items: center; gap: 10px">
-          <a
-            class="btn-floating btn-small red tooltipped"
-            href="https://www.youtube.com/@enlaceperutv"
-            target="_blank"
-            data-tooltip="YouTube"
-            ><i class="material-icons">ondemand_video</i></a
-          >
-          <a
-            class="btn-floating btn-small blue tooltipped"
-            href="https://facebook.com"
-            target="_blank"
-            data-tooltip="Facebook"
-            ><i class="material-icons">facebook</i></a
-          >
-          <a
-            class="btn-floating btn-small blue lighten-1 tooltipped"
-            href="https://twitter.com"
-            target="_blank"
-            data-tooltip="Twitter"
-            ><i class="material-icons">twitter</i></a
-          >
-          <a
-            class="btn-floating btn-small purple tooltipped"
-            href="https://instagram.com"
-            target="_blank"
-            data-tooltip="Instagram"
-            ><i class="material-icons">photo_camera</i></a
-          >
-        </div>
-      </div>
-      <ul class="nav-menu" style="display: flex; align-items: center; gap: 16px; margin: 0; flex-wrap: wrap">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Programas</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-    </div>
-  </nav>
+<nav class="white z-depth-1">
+  <div class="nav-wrapper container">
+    <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <img src="./img/logo.png" alt="Zona Vida Radio" style="height:50px; margin-top:5px; vertical-align: middle;" />
+    <ul class="right hide-on-med-and-down nav-menu" style="gap: 16px;">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Programas</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Menú lateral para móviles -->
+<ul class="sidenav" id="mobile-menu">
+  <li><a href="#">Inicio</a></li>
+  <li><a href="#">Programas</a></li>
+  <li><a href="#">Contacto</a></li>
+</ul>
+
 
   <!-- Contenedor que baja el círculo y el botón -->
   <div class="player-container">
