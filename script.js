@@ -55,22 +55,26 @@ document.addEventListener('DOMContentLoaded', function() {
   // PWA instalar botón
   let deferredPrompt;
   const installBtn = document.getElementById('installBtn');
+  installBtn.style.display = 'none'; // Oculta el botón inicialmente
+
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     installBtn.style.display = 'inline-flex';
+    console.log('Evento beforeinstallprompt disparado');
   });
 
   installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') {
-        installBtn.textContent = "¡Instalada!";
-      }
-      deferredPrompt = null;
-    } else {
-      alert("Para instalar, usa Chrome en Android o PC.");
+    if (!deferredPrompt) {
+      alert('Para instalar, usa Chrome en Android o PC.');
+      return;
     }
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      installBtn.textContent = '¡Instalada!';
+    }
+    deferredPrompt = null;
+    installBtn.style.display = 'none';
   });
 });
