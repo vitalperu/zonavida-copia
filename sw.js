@@ -1,64 +1,35 @@
-//asignar un nombre y versión al cache
-const CACHE_NAME = 'v1_adookia',
-  urlsToCache = [
-    './',
-    'https://radio.zonavidahd.online/listen/hd/radio.mp3',
-    'https://fonts.googleapis.com/icon?family=Material+Icons',
-    'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css',
-    './style.css',
-    'https://code.jquery.com/jquery-3.2.1.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js',
-    './script.js',
-    './img/logo.png',
-    './favicon.ico',
-    './img/favicon.png'
-  ]
+const CACHE_NAME = 'zona-vida-cache-v1';
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/style.css',
+  '/script.js',
+  '/favicon.ico',
+  '/manifest.json',
+  '/img/logo.png',
+  // agrega otros recursos estáticos necesarios
+];
 
-//durante la fase de instalación, generalmente se almacena en caché los activos estáticos
-self.addEventListener('install', e => {
-  e.waitUntil(
+self.addEventListener('install', event => {
+  event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache)
-          .then(() => self.skipWaiting())
-      })
-      .catch(err => console.log('Falló registro de cache', err))
-  )
-})
+      .then(cache => cache.addAll(urlsToCache))
+      .then(() => self.skipWaiting())
+  );
+});
 
-//una vez que se instala el SW, se activa y busca los recursos para hacer que funcione sin conexión
-self.addEventListener('activate', e => {
-  const cacheWhitelist = [CACHE_NAME]
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(keys.filter(key => key !== CACHE_NAME)
+        .map(key => caches.delete(key)));
+    }).then(() => self.clients.claim())
+  );
+});
 
-  e.waitUntil(
-    caches.keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames.map(cacheName => {
-            //Eliminamos lo que ya no se necesita en cache
-            if (cacheWhitelist.indexOf(cacheName) === -1) {
-              return caches.delete(cacheName)
-            }
-          })
-        )
-      })
-      // Le indica al SW activar el cache actual
-      .then(() => self.clients.claim())
-  )
-})
-
-//para cuando el navegador recupera una url
-self.addEventListener('fetch', e => {
-  //Responder ya sea con el objeto en caché o continuar y buscar la url real
-  e.respondWith(
-    caches.match(e.request)
-      .then(res => {
-        if (res) {
-          //recuperar cache
-          return res
-        }
-        //recuperar de la petición a la url
-        return fetch(e.request)
-      })
-  )
-})
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
+  );
+});
