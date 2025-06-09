@@ -92,5 +92,37 @@
   .brand-logo img {
     height: 38px !important;
   }
+.nav-menu {
+  list-style: none;
+  padding-left: 0;
+}
+.nav-menu li {
+  display: inline-block;
+}
+.nav-menu a {
+  color: #5e2760 !important;
+  font-weight: 600;
+  font-family: 'Montserrat', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+.nav-menu a:hover {
+  color: #a770ef !important;
+}
+.nav-socials .btn-floating {
+  margin-right: 0;
+  box-shadow: none;
+}
+@media (max-width: 700px) {
+  .nav-wrapper.container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-menu {
+    justify-content: center !important;
+    gap: 8px !important;
+  }  
 }
 
