@@ -63,21 +63,17 @@
       <source src="https://radio.zonavidahd.online/listen/hd/radio.mp3" type="audio/mpeg">
       Tu navegador no soporta audio en línea.
     </audio>
-    <div class="radio-controls">
-      <button class="btn-floating btn-large waves-effect waves-light purple" onclick="document.getElementById('player').play()">
-        <i class="material-icons">play_arrow</i>
-      </button>
-      <button class="btn-floating btn-large waves-effect waves-light pink" onclick="document.getElementById('player').pause()">
-        <i class="material-icons">pause</i>
-      </button>
-      <button class="btn-floating btn-large waves-effect waves-light blue" onclick="document.getElementById('player').volume-=0.2">
-        <i class="material-icons">volume_down</i>
-      </button>
-      <button class="btn-floating btn-large waves-effect waves-light teal" onclick="document.getElementById('player').volume+=0.2">
-        <i class="material-icons">volume_up</i>
-      </button>
-    </div>
-  </div>
+<div class="radio-controls">
+  <button class="btn-floating btn-large waves-effect waves-light purple" onclick="document.getElementById('player').play()">
+    <i class="material-icons">play_arrow</i>
+  </button>
+  <button class="btn-floating btn-large waves-effect waves-light pink" onclick="document.getElementById('player').pause()">
+    <i class="material-icons">pause</i>
+  </button>
+  <!-- Aquí va la barra de volumen -->
+  <input id="volumeBar" type="range" min="0" max="1" step="0.01" value="1" style="vertical-align:middle; width: 140px; margin: 0 16px;">
+  <span id="volIcon" style="vertical-align: middle;"><i class="material-icons">volume_up</i></span>
+</div>
 
   <!-- Botón Instalar PWA SIEMPRE visible -->
   <div class="center-align" style="margin-top:2rem;">
