@@ -219,4 +219,13 @@
   .nav-socials {
     justify-content: center;
   }
+  .sidenav-trigger {
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.nav-wrapper img {
+  vertical-align: middle;
+}
+
 }
