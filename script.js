@@ -1,21 +1,10 @@
-// Inicialización de carrusel (por si vuelves a usarlo)
+// Tooltips de Materialize y carrusel por si lo usas
 $(document).ready(function(){
-  $('.carousel').carousel({
-    fullWidth: true,
-  });
-  // Inicialización de tooltips para los botones sociales
   var tooltips = document.querySelectorAll('.tooltipped');
   if (window.M && window.M.Tooltip) {
     M.Tooltip.init(tooltips);
   }
 });
-
-// Registro del Service Worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js')
-    .then(reg => console.log('Registro de SW exitoso', reg))
-    .catch(err => console.warn('Error al tratar de registrar el sw', err))
-}
 
 // Control de volumen con barra e icono dinámico
 document.addEventListener("DOMContentLoaded", function() {
@@ -24,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const volIcon = document.getElementById('volIcon');
 
   if (volumeBar && player && volIcon) {
+    player.volume = volumeBar.value;
     volumeBar.addEventListener('input', () => {
       player.volume = volumeBar.value;
       if (player.volume == 0) {
