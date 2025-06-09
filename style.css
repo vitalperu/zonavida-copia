@@ -219,13 +219,24 @@
   .nav-socials {
     justify-content: center;
   }
-  .sidenav-trigger {
+  
+  /* Asegura que el botón hamburguesa solo se vea en pantallas chicas */
+.sidenav-trigger {
   cursor: pointer;
-  margin-right: 15px;
 }
 
-.nav-wrapper img {
-  vertical-align: middle;
+/* Oculta el menú desktop en pantallas pequeñas */
+.hide-on-small-only {
+  display: flex !important;
+}
+
+@media (max-width: 600px) {
+  .hide-on-small-only {
+    display: none !important;
+  }
+  .hide-on-med-and-up {
+    display: inline-flex !important;
+  }
 }
 
 }
