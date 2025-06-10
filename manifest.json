@@ -1,23 +1,20 @@
-let deferredPrompt;
-const installBtn = document.getElementById('installBtn');
-installBtn.style.display = 'none'; // Oculta el botón al cargar
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installBtn.style.display = 'inline-flex'; // Muestra el botón solo cuando se puede instalar
-});
-
-installBtn.addEventListener('click', async () => {
-  if (!deferredPrompt) {
-    alert('Para instalar, usa Chrome en Android o PC.');
-    return;
-  }
-  deferredPrompt.prompt();
-  const { outcome } = await deferredPrompt.userChoice;
-  if (outcome === 'accepted') {
-    installBtn.textContent = '¡Instalada!';
-  }
-  deferredPrompt = null;
-  installBtn.style.display = 'none'; // Oculta el botón después de instalar o cancelar
-});
+{
+  "name": "Zona Vida",
+  "short_name": "ZV",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "Instala gratis para android ios.",
+  "icons": [
+    {
+      "src": "img/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
