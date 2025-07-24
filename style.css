@@ -1,237 +1,485 @@
+/* styles.css */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  background-color: #ede7f6;
-  font-family: 'Montserrat', sans-serif;
-  color: #5e2760;
-  margin: 0;
+    margin: 0;
 }
 
-/* Navegación */
-nav {
-  padding: 0 1rem;
+#Layer1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 10; /* AsegÃºrate de que estÃ© encima */
 }
 
-.nav-wrapper {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  flex-wrap: wrap;
+#Layer2 {
+    position: absolute;
+    left: 0;
+    top: 451px;
+    width: 100%;
+    height: 63px;
+    z-index: 11; /* AsegÃºrate de que estÃ© encima */
+    background-color: #FF0000;
 }
 
-/* Logo y redes sociales */
-.nav-logo-socials {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.cuadro,
+.cuadro1,
+.cuadro2 {
+    border: 0;
+    font-size: 15px;
+    font-family: Arial, Verdana;
+    padding: 3px;
+    border-radius: 30px;
+    color: #000000;
+    background-color: #FFFFFF;
 }
 
-.nav-socials {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    z-index: 1;
+    background-color: #000000;
 }
 
-.nav-socials .btn-floating {
-  box-shadow: none;
-  transition: transform 0.2s ease;
+.whatsapp {
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 100px;
+    width: 100px;
+    right: 20px;
 }
 
-.nav-socials .btn-floating:hover {
-  transform: scale(1.15) rotate(-7deg);
-  box-shadow: 0 8px 24px 0 rgba(0,0,0,0.25);
+.redes_sociales {
+    font-size: 15px;
+    font-family: Arial, Verdana;
+    padding: 5px;
+    border-radius: 30px;
+    color: #000000;
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
 }
 
-/* Menú desktop */
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin: 0;
-  list-style: none;
-  padding-left: 0;
+.textbox {
+    border: 1px solid #ffffff;
+    font-family: Arial, Verdana;
+    border-radius: 25px;
+    color: #000000;
+    text-decoration: none;
 }
 
-.nav-menu li a {
-  color: #5e2760;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 1.1rem;
-  text-decoration: none;
-  transition: color 0.3s ease;
+html {
+    background: url(imagenes/logo.png) no-repeat center center fixed;
+    background-size: cover;
 }
 
-.nav-menu li a:hover {
-  color: #a770ef;
+.Estilo6 {
+    color: #ff0000;
 }
 
-/* Botón hamburguesa */
-.sidenav-trigger {
-  display: none;
-  cursor: pointer;
-  font-size: 2rem;
-  color: #5e2760;
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 12; /* AsegÃºrate de que estÃ© encima */
+    top: 0;
+    left: 0;
+    background-color: #FFFFFF;
+    overflow-x: hidden;
+    transition: 0.5s;
 }
 
-@media (max-width: 992px) {
-  .nav-menu {
-    display: none !important;
-  }
-  .sidenav-trigger {
-    display: inline-flex !important;
-  }
+.sidebar a {
+    padding: 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
 
-/* Menú lateral (sidenav) */
-.sidenav {
-  width: 250px;
+.sidebar a:hover {
+    color: #f1f1f1;
 }
 
-/* Visualizador circular y espectro */
-.circle-song-visual {
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #a770ef 0%, #f6d365 100%);
-  box-shadow: 0 4px 24px 0 #9b59b640;
-  position: relative;
-  animation: float 4s ease-in-out infinite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.openbtn {
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 25px;
+    z-index: 12; /* AsegÃºrate de que estÃ© encima */
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
+.openbtn:hover {
+    background-color: #444;
 }
 
-.spectrum-bars {
-  position: absolute;
-  top: 38px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  height: 40px;
-  gap: 5px;
-  z-index: 2;
+#main {
+    transition: margin-left 0s;
+    padding: 4px;
 }
 
-.spectrum-bars .bar {
-  width: 12px;
-  height: 22px;
-  background: #fff;
-  border-radius: 5px;
-  margin: 0 2px;
-  animation: bounce 1s infinite alternate;
+video {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: -1; /* AsegÃºrate de que estÃ© detrÃ¡s */
 }
 
-.spectrum-bars .bar:nth-child(2) { animation-delay: 0.15s; }
-.spectrum-bars .bar:nth-child(3) { animation-delay: 0.3s; }
-.spectrum-bars .bar:nth-child(4) { animation-delay: 0.45s; }
-.spectrum-bars .bar:nth-child(5) { animation-delay: 0.6s; }
-.spectrum-bars .bar:nth-child(6) { animation-delay: 0.75s; }
-
-@keyframes bounce {
-  to {
-    height: 38px;
-    background: #fff9;
-  }
+#lunaradiocoverwrapper {
+    width: 50vw; /* Aumenta el ancho al 50% del viewport */
+    height: auto; /* Permite que la altura se ajuste automÃ¡ticamente */
+    max-width: 500%; /* Aumenta el tamaÃ±o mÃ¡ximo */
+    max-height: 500%; /* Aumenta el tamaÃ±o mÃ¡ximo */
+    aspect-ratio: 1; /* Asegura que mantenga una proporciÃ³n cuadrada */
 }
 
-/* Texto debajo del círculo */
-.song-info {
-  margin-top: 0.5rem;
-  text-align: center;
-  color: #5e2760;
-  font-weight: 600;
-  font-size: 0.85rem;
-  opacity: 0.75;
-  letter-spacing: 0.8px;
-  font-family: 'Montserrat', sans-serif;
+
+
+#lunaradioiconlive {
+    display: none;
 }
 
-.song-title {
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  margin-bottom: 0.2rem;
+#lunaradiobuttonanalyzer {
+    display: none;
 }
 
-.song-artist {
-  font-style: italic;
-  font-size: 0.85rem;
-  opacity: 0.7;
+#lunaradio * {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-/* Contenedor principal */
-.player-container {
-  min-height: calc(100vh - 100px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 1rem;
-  padding: 2rem 0 3rem 0;
+#lunaradiopauseplaywrapper {
+    background: #FF0000; /* AQUI SE CAMBIA EL COLOR DEL PLAY DEL CENTRO*/
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.circle-wrapper {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#lunaradiopauseplaywrapper:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
 }
 
-/* Controles de radio */
-.radio-controls-wrapper {
-  margin: 0;
-  display: flex;
-  justify-content: center;
+#lunaradiopauseplaywrapper:active {
+    transform: scale(0.95);
 }
 
-.radio-controls {
-  margin-top: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+#lunaradiopauseplaywrapper svg {
+    fill: white;
+    width: 100%;
+    height: 100%;
 }
 
-/* Botón instalar */
-.install-button-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+#lunaradiobuttonvolumeoff,
+#lunaradiobuttonvolumeon {
+    background: #FF0000;  /* AQUI SE CAMBIA EL COLOR DE LOS ICONOS DE VOLUMEN*/
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-#installBtn {
-  padding: 0 20px;
-  height: 36px;
-  font-size: 0.9rem;
-  border-radius: 20px;
-  background-color: #5e2760;
-  color: #fff;
-  text-transform: none;
-  box-shadow: 0 4px 12px rgb(94 39 96 / 0.5);
-  transition: background-color 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
+#lunaradiobuttonvolumeoff:hover,
+#lunaradiobuttonvolumeon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
 }
 
-#installBtn:hover {
-  background-color: #a770ef;
+#lunaradiobuttonvolumeoff:active,
+#lunaradiobuttonvolumeon:active {
+    transform: scale(0.95);
 }
 
-#installBtn i.material-icons.left {
-  font-size: 20px;
-  line-height: 20px;
+#lunaradiobuttonvolumeoff svg,
+#lunaradiobuttonvolumeon svg {
+    fill: white;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    display: block;
 }
+
+#lunaradiocoverwrapper {
+    background-color: rgba(255, 0, 0, 0.8);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#lunaradiocoverwrapper:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+}
+
+#lunaradiocoverwrapper:active {
+    transform: scale(0.95);
+}
+
+#lunaradiocoverwrapper svg {
+    fill: white;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    display: block;
+}
+
+#lunaradiocoverwrapper {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#lunaradiopauseplaywrapper {
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+#lunaradio {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: bold;
+}
+
+#lunaradio .some-text-class {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#lunaradiotextradioname {
+    display: inline-block;
+    animation: pulse 1s infinite;
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.openbtn {
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.menu-icon {
+    width: 30px;
+    height: auto;
+    display: block;
+}
+
+.openbtn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+    background-color: white;
+}
+
+.openbtn:active {
+    transform: scale(1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Para navegadores WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #1a1a1a;
+}
+
+/* Para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #333 #1a1a1a;
+}
+
+/* Estilo para el modal del chat */
+.chat-modal {
+    display: none; 
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s ease;
+    transform: translateY(100%); 
+    z-index: 999;
+}
+
+.chat-modal.show {
+    display: block;
+    transform: translateY(0); 
+}
+
+.chat-modal iframe {
+    width: 100%; 
+    height: 100%; 
+    border: none;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse-logo {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#installButtonWrapper {
+    position: absolute; /* Mantiene su posiciÃ³n absoluta */
+    top: 10px; /* Ajusta la distancia desde la parte superior */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Asegura que estÃ© centrado */
+    z-index: 12; /* AsegÃºrate de que estÃ© encima del fondo */
+    text-align: center; /* Centra el contenido dentro del wrapper */
+}
+
+/* Estilos para los iconos de redes sociales */
+.social-icons {
+    position: absolute;
+    right: 20px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+.social-icon {
+    width: 40px; /* TamaÃ±o inicial */
+    height: 40px; 
+    border-radius: 50%; /* Si quieres que sean circulares */
+    object-fit: cover; 
+    transition: transform 0.2s; /* Efecto de transiciÃ³n */
+}
+
+.social-icon:hover {
+    transform: scale(1.1); /* Aumenta el tamaÃ±o al pasar el cursor */
+}
+
+.pulse {
+    display: inline-block; /* Permite aplicar transformaciones */
+    animation: heartbeat 1.2s infinite; /* Define la animaciÃ³n */
+}
+
+/* Define la animaciÃ³n de pulso */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1); /* TamaÃ±o original */
+    }
+    50% {
+        transform: scale(1.1); /* Aumento al 110% */
+    }
+}
+
+
