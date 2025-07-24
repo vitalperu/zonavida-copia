@@ -1,119 +1,383 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zona Vida Radio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Pan de Vida</title>
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="360" />
+    <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo.png" />
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Link to the manifest file -->
+    <link rel="manifest" href="manifest.json">
+    
+    <style>
+        /* Estilo para el video */
+        video {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            z-index: -1; 
+        }
 
-  <!-- Google Fonts y Material Icons -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        /* Estilo para la imagen de fondo */
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            background-image: url('imagenes/logo.png'); 
+            background-size: cover; 
+            background-position: center; 
+            z-index: -1; 
+            filter: blur(10px); 
+        }
 
-  <!-- Materialize CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-  />
-  <!-- Tu CSS -->
-  <link rel="stylesheet" href="style.css" />
+        /* Asegura que el body y html ocupen el 100% */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: auto; 
+        }
 
-  <!-- Enlaces para PWA -->
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#5e2760" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        /* Estilos para el botón de instalación */
+        #installButtonWrapper {
+            position: relative; 
+            top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            z-index: 10; 
+        }
+
+        #installButton {
+            width: 150px; 
+            cursor: pointer; 
+            transition: transform 0.2s; 
+        }
+
+        #installButton:hover {
+            transform: scale(1.1); 
+        }
+
+        /* Estilos para los iconos de redes sociales */
+        .social-icons {
+            position: absolute;
+            right: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            display: flex;
+            flex-direction: column; 
+            gap: 10px; 
+        }
+
+        .social-icon {
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+        }
+
+        /* Estilo para el modal del chat */
+        .chat-modal {
+            display: none; 
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh; 
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+            transform: translateY(100%); 
+            z-index: 999;
+        }
+
+        .chat-modal.show {
+            display: block;
+            transform: translateY(0); 
+        }
+
+        .chat-modal iframe {
+            width: 100%; 
+            height: 100%; 
+            border: none;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1000; 
+        }
+    </style>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Radio Interactiva" />
+    <meta property="og:description" content="Radio Interactiva ¡Escucha y disfruta las 24 horas!" />
+    <meta property="og:image" content="imagenes/logo.png" />
+    <meta property="og:url" content="https://app.turadiointeractiva.com/" />
+    <meta property="og:type" content="website" />
 </head>
-<body class="deep-purple lighten-5">
+<body>
+    <div class="background-image"></div>
+    <video src="video.mp4" autoplay muted loop></video>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td valign="top">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td width="50%">&nbsp;</td>
+                        <td width="50%" align="right">
+                            <div id="mySidebar" class="sidebar">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td><img src="imagenes/logo.png" class="pulse-logo" width="100%" height="auto"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        
+                                        <td>
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="10">
+                                                <tr>
+                                                    <td><a href="javascript:void(0);" onclick="closeNav();"><img src="imagenes/inicio.png" width="100%" height="auto" border="0"></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="tel:+51925445900" target="_blank"><img src="imagenes/llamanos.png" width="100%" height="auto" border="0"></a></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><hr></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="10">
+                                                <tr>
+                                                    <td><a href="https://app.turadiointeractiva.com/" target="_blank"><img src="imagenes/web.png" width="100%" height="auto" border="0"></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="https://www.instagram.com/radiointeractiva" target="_blank"><img src="imagenes/instagram.png" width="100%" height="auto" border="0"></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="https://www.tiktok.com/@interactiva_online" target="_blank"><img src="imagenes/tiktok.png" width="100%" height="auto" border="0"></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="https://youtube.com/@Turadiointeractiva" target="_blank"><img src="imagenes/youtube.png" width="100%" height="auto" border="0"></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="https://www.messenger.com/t/100068492643115" target="_blank"><img src="imagenes/messenger.png" width="100%" height="auto" border="0"></a></td>
+                                                </tr>
+                                                <tr></tr>
+                                                    <td><a href="mailto:radiointeractiva@gmail.com" target="_blank"><img src="imagenes/email.png" width="100%" height="auto" border="0"></a></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><hr></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="10">
+                                                <tr>
+                                                    <td>
+                                                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://app.turadiointeractiva.com/" target="_blank">
+                                                            <img src="imagenes/compartirfacebook.png" class="pulse" width="100%" height="auto">
+                                                        </a>                                                         
+                                                        <a href="https://api.whatsapp.com/send?text=¡Hola! Te Invito a escuchar nuestra Emisora https://app.turadiointeractiva.com/" target="_blank">
+                                                            <img src="imagenes/compartirwhatsapp.png" class="pulse" width="100%" height="auto">
+                                                        </a>                                                                                                              
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
 
-  <!-- Aquí va tu código HTML existente, menú, reproductor, etc. -->
+                            <div id="main">
+                                <button class="openbtn" onClick="toggleNav()">
+                                    <img src="menu.png" alt="Menu" class="menu-icon">
+                                </button>                            
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height="470" valign="top">
+              <div id="installButtonWrapper">
+                <img src="instalar.png" id="installButton" alt="Instalar App" />
+            </div>         
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="js/lunaradio.min.js"></script>
+                <div id="lunaradio" style="width: 100%; height: 76vh;"></div>
+            </td>
+        </tr>
+    </table>
 
-  <nav class="white z-depth-1">
-    <div class="nav-wrapper container">
-      <div class="nav-logo-socials">
-        <img src="./img/logo.png" alt="Zona Vida Radio" style="height:50px; margin-top:5px;" />
-        <div class="nav-socials">
-          <a class="btn-floating btn-small red tooltipped" href="https://www.youtube.com/@enlaceperutv" target="_blank" data-tooltip="YouTube"><i class="material-icons">ondemand_video</i></a>
-          <a class="btn-floating btn-small blue tooltipped" href="https://facebook.com" target="_blank" data-tooltip="Facebook"><i class="material-icons">facebook</i></a>
-          <a class="btn-floating btn-small blue lighten-1 tooltipped" href="https://twitter.com" target="_blank" data-tooltip="Twitter"><i class="material-icons">twitter</i></a>
-          <a class="btn-floating btn-small purple tooltipped" href="https://instagram.com" target="_blank" data-tooltip="Instagram"><i class="material-icons">photo_camera</i></a>
+    <div class="social-icons">
+        <a href="https://wa.link/p073o3" target="_blank">
+            <img src="iconos/whatsapp.png" class="social-icon" alt="WhatsApp">
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100068492643115" target="_blank">
+            <img src="iconos/facebook.png" class="social-icon" alt="Facebook">
+        </a>
+        <a href="https://www.tiktok.com/@interactiva_online" target="_blank">
+            <img src="iconos/tiktok.png" class="social-icon" alt="tiktok">
+            </a>
+   <a href="https://www.youtube.com/@Turadiointeractiva" target="_blank">
+            <img src="iconos/youtube.png" class="social-icon" alt="youtube">
+          </a>
+ 
+  <a href="https://turadiointeractiva.com/" target="_blank">
+            <img src="iconos/web.png" class="social-icon" alt="web">
+          </a>   </div>
+
+    <script>
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installButtonWrapper').style.display = 'block'; // Muestra el botón
+        });
+
+        document.getElementById('installButton').addEventListener('click', () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('Usuario aceptó la instalación');
+                    } else {
+                        console.log('Usuario rechazó la instalación');
+                    }
+                });
+                deferredPrompt = null; // Resetea el prompt
+                document.getElementById('installButtonWrapper').style.display = 'none'; // Oculta el botón
+            }
+        });
+
+        // Lógica para abrir y cerrar el menú
+        function toggleNav() {
+            const sidebar = document.getElementById("mySidebar");
+            const main = document.getElementById("main");
+            
+            if (sidebar.style.width === "250px") {
+                closeNav();
+            } else {
+                openNav();
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+
+        // Cerrar el menú al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById("mySidebar");
+            const button = document.querySelector('.openbtn');
+
+            if (sidebar.style.width === "250px" && !sidebar.contains(event.target) && !button.contains(event.target)) {
+                closeNav();
+            }
+        });
+
+        // Inicialización del reproductor
+        jQuery(document).ready(function($) {
+            $("#lunaradio").lunaradio({
+                userinterface: "big",
+                backgroundcolor: "transparent",
+                fontcolor: "#ffffff",
+                hightlightcolor: "#ffffff",
+                fontname: "Unica One",
+	            googlefont: "Unica+One&display=swap",
+	            fontratio: "0.6",
+                radioname: "RADIO EN VIVO",
+                scroll: "true",
+                coverimage: "imagenes/logo.png",
+                onlycoverimage: "false",
+                coverstyle: "",
+                usevisualizer: "real",
+                visualizertype: "6",
+                multicolorvisualizer: "true",
+                color1: "#ffffff",
+                visualizeropacity: "0.0",
+                itunestoken: "1000lIPN",
+                metadatatechnic: "",
+                ownmetadataurl: "true",
+                metadata: "",
+                streamurl: "https://stream.zeno.fm/4h038ut0mwzuv",
+                streamtype: "zenomedia",
+                shoutcastpath: "/stream",
+                debug: "false",
+                autoplay: "true",
+                displayliveicon: "true",
+                displayvisualizericon: "true",
+            });
+        });
+
+
+ 
+
+        // Lógica para abrir y cerrar el chat modal
+        document.getElementById('chatIcon').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('chatModal').classList.toggle('show');
+        });
+
+        document.getElementById('closeChat').addEventListener('click', function() {
+            document.getElementById('chatModal').classList.remove('show');
+        });
+    </script>
+    
+    
+    
+    <!-- Register Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registrado con éxito:', reg))
+                    .catch(err => console.log('Error al registrar el Service Worker:', err));
+            });
+        }
+        
+         
+   
+            $(".mobile-nav-toggle").click(function () {
+                $("body").toggleClass("mobile-nav-active");
+                $(".mobile-nav-toggle i").toggleClass("fa-bars fa-times");
+            });
+        </script>
+    </script>
+    <footer style="display:grid;align-content:end">
+        <div style="#3e3e94; color:#fff;text-align:center;padding:3px">
+            &copy;  Desarrollado Por: Radio Interactiva Cel. 974713942</a>
         </div>
-      </div>
-
-      <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
-      <ul class="nav-menu right">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Programas</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <ul class="sidenav" id="mobile-menu">
-    <li><a href="#">Inicio</a></li>
-    <li><a href="#">Programas</a></li>
-    <li><a href="#">Contacto</a></li>
-  </ul>
-
-  <div class="player-container">
-    <div class="circle-wrapper">
-      <div class="circle-song-visual">
-        <div class="spectrum-bars">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-      </div>
-      <div class="song-info">
-        <div class="song-title">Nombre de la Canción</div>
-        <div class="song-artist">Nombre del Artista</div>
-      </div>
-    </div>
-
-    <div class="radio-controls-wrapper">
-      <audio id="player" preload="auto">
-        <source src="https://radio.zonavidahd.online/listen/hd/radio.mp3" type="audio/mpeg" />
-        Tu navegador no soporta audio en línea.
-      </audio>
-      <div class="radio-controls">
-        <button id="playPauseBtn" class="btn-floating btn-large waves-effect waves-light purple">
-          <i id="playPauseIcon" class="material-icons">play_arrow</i>
-        </button>
-        <input id="volumeBar" type="range" min="0" max="1" step="0.01" value="1" style="vertical-align:middle; width: 140px; margin: 0 16px;" />
-        <span id="volIcon" style="vertical-align: middle; cursor: pointer;">
-          <i class="material-icons">volume_up</i>
-        </span>
-        <span id="volValue" style="font-weight: 600; margin-left: 8px;">100%</span>
-      </div>
-    </div>
-
-    <div class="install-button-wrapper">
-      <button id="installBtn" class="btn-large waves-effect waves-light">
-        <i class="material-icons left">download</i> Instalar App
-      </button>
-    </div>
-  </div>
-
-  <!-- Materialize JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <!-- Tu JS -->
-  <script src="script.js"></script>
-
-  <!-- Registro del Service Worker para PWA -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('Service Worker registrado con éxito:', registration.scope);
-          })
-          .catch(error => {
-            console.error('Error registrando el Service Worker:', error);
-          });
-      });
-    }
-  </script>
+        <script>
 </body>
+
+
 </html>
